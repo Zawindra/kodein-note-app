@@ -3,7 +3,7 @@ import React from "react";
 
 export default function NoteList({ contentIdeas, contentSave, onDelete }) {
   return (
-    <div className="w-[85%] mx-auto px-4">
+    <div className="w-[85%] mx-auto px-4 pb-24">
       {/* Active Section */}
       <div className="flex items-center gap-3 mb-6">
         <img src="/Active.svg" alt="Active" className="w-7 h-7" />
@@ -23,7 +23,7 @@ export default function NoteList({ contentIdeas, contentSave, onDelete }) {
       </div>
 
       {/* Archive Section */}
-      <div className="flex items-center gap-3 mb-6 mt-10">
+      <div className="flex items-center gap-3 mb-6 mt-10 ">
         <img src="/Archive.svg" alt="Archive" className="w-7 h-7" />
         <h1 className="text-3xl font-bold text-gray-800">Archive</h1>
       </div>
