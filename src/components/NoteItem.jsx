@@ -1,9 +1,9 @@
+import React from "react";
+import NoteItem from "./NoteItem";
+
 export default function NoteItem({ idea, img, colorClass, onDelete }) {
   return (
-    <div
-      key={idea.id}
-      className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow w-[320px] h-[180px] border border-gray-200"
-    >
+    <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow w-[320px] h-[180px] border border-gray-200">
       <div className={`h-6 w-full rounded-t-xl ${colorClass}`}></div>
       <div className="p-5 flex flex-col justify-between h-[150px]">
         <div className="flex justify-between items-start">
@@ -15,14 +15,18 @@ export default function NoteItem({ idea, img, colorClass, onDelete }) {
             <img
               src={img}
               alt="icon"
+              title="Action"
               className="cursor-pointer w-6 h-6 hover:scale-110 transition-transform duration-200"
             />
-            <img
-              src="/Trash.svg"
-              alt="delete"
-              className="cursor-pointer w-6 h-6 hover:scale-110 transition-transform duration-200"
-              onClick={() => onDelete && onDelete(idea.id)} 
-            />
+            {onDelete && (
+              <img
+                src="/Trash.svg"
+                alt="delete"
+                title="Delete"
+                className="cursor-pointer w-6 h-6 hover:scale-110 transition-transform duration-200"
+                onClick={() => onDelete(idea.id)}
+              />
+            )}
           </div>
         </div>
 
