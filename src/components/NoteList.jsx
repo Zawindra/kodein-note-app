@@ -1,5 +1,5 @@
-import NoteItem from "./NoteItem"; 
-import NoteList from "./NoteList";
+import NoteItem from "./NoteItem";
+import React from "react"; 
 
 export default function NoteList({ contentIdeas, contentSave, onDelete }) {
   return (
