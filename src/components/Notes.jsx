@@ -2,51 +2,43 @@ import { useState } from "react";
 import NoteForm from "./NoteForm";
 import NoteList from "./NoteList";
 
-export default function Notes() {
-  const [contentIdeas, setContentIdeas] = useState([
-    {
-      id: 1,
-      title: "Ide Konten",
-      date: "~Selasa, 13 Mei 2025",
-      tips: "Tips belajar React untuk pemula.",
-    },
-    {
-      id: 2,
-      title: "Ide Konten",
-      date: "~Selasa, 13 Mei 2025",
-      tips: "Tips belajar React untuk pemula.",
-    },
-  ]);
+export default function Notes({notes,setNotes }) {
 
-  const [contentSave, setContentSave] = useState([
-    {
-      id: 1,
-      title: "Ide Konten",
-      date: "~Selasa, 13 Mei 2025",
-      tips: "Tips belajar React untuk pemula.",
-    },
-    {
-      id: 2,
-      title: "Ide Konten",
-      date: "~Selasa, 13 Mei 2025",
-      tips: "Tips belajar React untuk pemula.",
-    },
-  ]);
+  const formatDate = (dateObj) => {
+    return dateObj.toLocaleDateString("id-ID", {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+  };
 
   const onAdd = (title, content) => {
-    const newIdea = {
-      id: contentIdeas.length + 1,
-      title,
-      date: "~Selasa, 13 Mei 2025",
-      tips: content,
+    const newNote = {
+      id: new Date().getTime(),
+      title:title,
+      content: content,
+      archived: false,
+      createAt: new Date().toISOString(),
+      date: `~${formatDate(new Date())}`,
     };
-    setContentIdeas([...contentIdeas, newIdea]);
+    setNotes([newNote, ...notes]);
   };
 
   const handleDeleteNote = (id) => {
-    const updatedNotes = contentIdeas.filter((note) => note.id !== id);
-    setContentIdeas(updatedNotes);
+    setNotes(notes.filter((note) => note.id !== id));
   };
+
+  const handleToggleArchive = (id) => {
+    setNotes(
+      notes.map((note) =>
+        note.id === id ? { ...note, archived: !note.archived } : note
+      )
+    );
+  };
+
+  const contentIdeas = notes.filter((note) => !note.archived);
+  const contentSave = notes.filter((note) => note.archived);
 
   return (
     <div className="flex flex-col gap-10">
@@ -55,6 +47,7 @@ export default function Notes() {
         contentIdeas={contentIdeas}
         contentSave={contentSave}
         onDelete={handleDeleteNote}
+        onToggleArchive={handleToggleArchive}
       />
     </div>
   );

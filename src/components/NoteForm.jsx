@@ -7,7 +7,9 @@ export default function NoteForm({ onAdd }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!title || !content) {
-      alert("Please fill in all fields");
+      if (!title) {
+        alert("Title is required");
+      }
       return;
     }
     onAdd(title, content);
@@ -46,11 +48,11 @@ export default function NoteForm({ onAdd }) {
       </div>
 
       <button
-  type="submit"
-  className="w-full bg-[#1B80C7] hover:bg-[#176FAB] text-white font-semibold py-3 rounded-md transition duration-200"
->
-  Add Note
-</button>
+        type="submit"
+        className="w-full bg-[#1B80C7] hover:bg-[#176FAB] text-white font-semibold py-3 rounded-md transition duration-200"
+      >
+        Add Note
+      </button>
     </form>
   );
 }

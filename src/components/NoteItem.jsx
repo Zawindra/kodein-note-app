@@ -1,6 +1,5 @@
-import React from "react";
 
-export default function NoteItem({ idea, img, colorClass, onDelete }) {
+export default function NoteItem({ idea, img, colorClass, onDelete, onToggleArchive }) {
   return (
     <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow w-[320px] h-[180px] border border-gray-200">
       <div className={`h-6 w-full rounded-t-xl ${colorClass}`}></div>
@@ -11,12 +10,15 @@ export default function NoteItem({ idea, img, colorClass, onDelete }) {
             <p className="text-sm text-gray-500">{idea.date}</p>
           </div>
           <div className="flex gap-2">
-            <img
-              src={img}
-              alt="icon"
-              title="Action"
-              className="cursor-pointer w-6 h-6 hover:scale-110 transition-transform duration-200"
-            />
+            {onToggleArchive && (
+              <img
+                src={img}
+                alt="toggle archive"
+                title="Toggle Archive"
+                className="cursor-pointer w-6 h-6 hover:scale-110 transition-transform duration-200"
+                onClick={() => onToggleArchive(idea.id)}
+              />
+            )}
             {onDelete && (
               <img
                 src="/Trash.svg"
@@ -29,7 +31,7 @@ export default function NoteItem({ idea, img, colorClass, onDelete }) {
           </div>
         </div>
 
-        <h3 className="text-sm font-normal text-gray-700 mt-2">{idea.tips}</h3>
+        <h3 className="text-sm font-normal text-gray-700 mt-2">{idea.content}</h3>
       </div>
     </div>
   );

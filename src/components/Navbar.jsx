@@ -1,4 +1,8 @@
-export default function Navbar() {
+import { useState } from "react";
+
+export default function Navbar({ onSearch }) {
+ 
+
   return (
     <nav className="w-full py-4">
       <div className="flex justify-around items-center gap-40 py-4">
@@ -9,6 +13,7 @@ export default function Navbar() {
             type="text"
             placeholder="Search..."
             className="pl-10 pr-4 py-1.5 w-52 border border-gray-300 rounded-md text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            onChange={(e) => onSearch(e.target.value)}
           />
           <img
             src="/Search.png"
