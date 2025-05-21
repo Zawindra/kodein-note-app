@@ -4,7 +4,7 @@ import Notes from "./components/Notes";
 
 export default function App() {
   const loadNotes = () => JSON.parse(localStorage.getItem("notes") || []);
-  const [notes, setNotes] = useState(loadNotes);
+  const [notes, setNotes] = useState([]);
   const [filteredNotes, setFilteredNotes] = useState(notes);
 
   useEffect(() => {
