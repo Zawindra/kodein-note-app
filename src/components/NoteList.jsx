@@ -3,7 +3,7 @@ import React from "react";
 
 export default function NoteList({ contentIdeas, contentSave, onDelete, onToggleArchive }) {
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 pb-24 pt-10">
+    <div className="w-full px-44 pb-24 pt-10 sm:max-w-3xl sm:mx-auto lg:max-w-full lg:mx-0 text-left">
       {/* Active Section */}
       <div className="flex items-center gap-3 mb-6">
         <img src="/Active.svg" alt="Active" className="w-5 h-5" />
@@ -13,7 +13,7 @@ export default function NoteList({ contentIdeas, contentSave, onDelete, onToggle
       {contentIdeas.length === 0 ? (
         <p className="text-gray-500 italic mb-6">No active notes available.</p>
       ) : (
-        <div className="flex gap-6 flex-wrap justify-center sm:justify-start">
+        <div className="flex gap-6 flex-wrap justify-start">
           {contentIdeas.map((idea) => (
             <NoteItem
               key={idea.id}
@@ -36,7 +36,7 @@ export default function NoteList({ contentIdeas, contentSave, onDelete, onToggle
       {contentSave.length === 0 ? (
         <p className="text-gray-500 italic">No archived notes available.</p>
       ) : (
-        <div className="flex gap-6 flex-wrap justify-center sm:justify-start">
+        <div className="flex gap-6 flex-wrap justify-start">
           {contentSave.map((idea) => (
             <NoteItem
               key={idea.id}
