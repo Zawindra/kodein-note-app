@@ -3,9 +3,13 @@ import Navbar from "./components/Navbar";
 import Notes from "./components/Notes";
 
 export default function App() {
-  const loadNotes = () => JSON.parse(localStorage.getItem("notes") || []);
-  const [notes, setNotes] = useState([]);
-  const [filteredNotes, setFilteredNotes] = useState(notes);
+  const loadNotes = () => {
+    const savedNotes = localStorage.getItem("notes");
+    return savedNotes ? JSON.parse(savedNotes) : [];
+  };
+
+  const [notes, setNotes] = useState(loadNotes); 
+  const [filteredNotes, setFilteredNotes] = useState(loadNotes); 
 
   useEffect(() => {
     setFilteredNotes(notes);

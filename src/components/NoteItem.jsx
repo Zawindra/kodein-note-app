@@ -1,7 +1,6 @@
-
 export default function NoteItem({ idea, img, colorClass, onDelete, onToggleArchive }) {
   return (
-    <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow w-[320px] h-[180px] border border-gray-200">
+    <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow w-full max-w-xs sm:w-[320px] h-[180px] border border-gray-200">
       <div className={`h-6 w-full rounded-t-xl ${colorClass}`}></div>
       <div className="p-5 flex flex-col justify-between h-[150px]">
         <div className="flex justify-between items-start">
@@ -30,7 +29,6 @@ export default function NoteItem({ idea, img, colorClass, onDelete, onToggleArch
             )}
           </div>
         </div>
-
         <h3 className="text-sm font-normal text-gray-700 mt-2">{idea.content}</h3>
       </div>
     </div>

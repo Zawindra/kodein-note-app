@@ -20,7 +20,7 @@ export default function NoteForm({ onAdd }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-[700px] mx-auto mt-28 space-y-6"
+      className="w-full max-w-2xl px-4 mx-auto mt-28 space-y-6"
     >
       <div>
         <label className="block text-base font-medium mb-2 text-gray-800">
